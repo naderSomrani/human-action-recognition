@@ -1,0 +1,17 @@
+__pycache__
+*.trt
+*.pth
+*.onnx
+
+# IO data folders
+data
+output
+src/static/input/
+src/static/output/
+src/static/configs/
+torch2trt
+trt_pose
+test_data
+
+# to do
+TO_DO.txt
