@@ -156,24 +156,15 @@ Examples:
 
 - You can also tune other parameters of [`TRACKER`](https://github.com/CV-ZMH/human-action-recognition/blob/6bdf3a541eb6adc618c67e4e6df7d6fdaddffb1b/configs/infer_trtpose_deepsort_dnn.yaml#L20) node and [`POSE`](https://github.com/CV-ZMH/human-action-recognition/blob/6bdf3a541eb6adc618c67e4e6df7d6fdaddffb1b/configs/infer_trtpose_deepsort_dnn.yaml#L4) node for better tracking and action recognition result.
 
-  
 
 | Model Type | Name | Trained Dataset | Weight |
-
 |---|---|---|---|
-
 | Pose Estimation | trtpose | COCO |[densenet121](https://drive.google.com/file/d/1De2VNUArwYbP_aP6wYgDJfPInG0sRYca/view?usp=sharing) |
-
 |||||
-
 | Tracking | deepsort reid| Market1501 | [wide_resnet](https://drive.google.com/file/d/1xw7Sv4KhrzXMQVVQ6Pc9QeH4QDpxBfv_/view?usp=sharing)|
-
 | Tracking | deepsort reid| Market1501 | [siamese_net](https://drive.google.com/file/d/11OmfZqnnG4UBOzr05LEKvKmTDF5MOf2H/view?usp=sharing)|
-
 | Tracking | deepsort reid| Mars | [wide_resnet](https://drive.google.com/file/d/1lRvkNsJrR4qj50JHsKStEbaSuEXU3u1-/view?usp=sharing)|
-
 | Tracking | deepsort reid| Mars | [siamese_net](https://drive.google.com/file/d/1eyj5zKoLjnHqfSIz2eJjXq0r9Sw7k0R0/view?usp=sharing)|
-
   
   
 
