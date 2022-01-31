@@ -181,15 +181,14 @@ flask run
 
 ```
 ## Step 6 - Invoke API
- API endpoint: `/action`
- Input type: `multipart/form-data`
- Input: 
- 
+- API endpoint: `/action`
+- Input type: `multipart/form-data`
+- Input: 
 
- - video: file (required - allowed extensions: mp4, avi)
- - task: (action, pose, track) (optional - default: action)
- - config: file (optional)
- - draw_kp_numbers: true/false (optional - default: false)
- - debug_track: true/false (optional - default: true)
+	 - video: file (required - allowed extensions: mp4, avi)
+	 - task: (action, pose, track) (optional - default: action)
+	 - config: file (optional)
+	 - draw_kp_numbers: true/false (optional - default: false)
+	 - debug_track: true/false (optional - default: true)
  
-Output: {url: "result_url"}
+- Output: {url: "result_url"}

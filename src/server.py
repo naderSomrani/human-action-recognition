@@ -167,5 +167,5 @@ def person_action_recognition_api():
         writer.release()
     video.stop()
     return jsonify({
-        'url': 'http://127.0.0.1:5000/' + output_path
+        'url': 'http://' + request.host + '/' + output_path
     })
