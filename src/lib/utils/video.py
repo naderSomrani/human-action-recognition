@@ -117,8 +117,8 @@ class Video:
 
     def get_writer(self, frame, output_path, fps=20):
         output_path = osp.join(
-            output_path, osp.splitext(osp.basename(self.src))[0]+'.avi') \
-            if output_path[-4:] != '.avi' else output_path
+            output_path, osp.splitext(osp.basename(self.src))[0]+'.mp4') \
+            if output_path[-4:] != '.mp4' else output_path
         fourcc = cv2.VideoWriter_fourcc(*"XVID")
         output_size = (frame.shape[1], frame.shape[0]) # OpenCV format is (width, height)
         writer = cv2.VideoWriter(output_path, fourcc, fps, output_size)
@@ -132,7 +132,7 @@ class Video:
             'webcam' if isinstance(self.src, int) else osp.splitext(self.display)[0],
             *iter(suffix)
             )
-        output_path = osp.join(output_folder, f'{filename[:-1]}.avi')
+        output_path = osp.join(output_folder, f'{filename[:-1]}.mp4')
         return output_path
 
     def abbreviate_description(self, description: str) -> str:

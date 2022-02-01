@@ -16,7 +16,7 @@ class Drawer:
         self.thickness = thickness
         self.font = cv2.FONT_HERSHEY_COMPLEX
 
-    def render_frame(self, image, predictions, **user_text_kwargs):
+    def render_frame(self, image, predictions, task, **user_text_kwargs):
         """Draw all persons [skeletons / tracked_id / action] annotations on image
         in trtpose keypoint format.
         """
@@ -33,7 +33,7 @@ class Drawer:
             if pred.color is not None: self.color = pred.color
             self.draw_trtpose(render_frame, pred)
             if pred.bbox is not None:
-                self.draw_bbox_label(render_frame, pred)
+                self.draw_bbox_label(render_frame, pred, task)
 
         if len(user_text_kwargs)>0:
             render_frame = self.add_user_text(render_frame, **user_text_kwargs)
@@ -60,8 +60,10 @@ class Drawer:
             start, end = map(tuple, [pred.keypoints[pair[0]], pred.keypoints[pair[1]]])
             cv2.line(image, start[1:], end[1:], self.color, self.thickness)
 
-    def draw_bbox_label(self, image, pred):
+    def draw_bbox_label(self, image, pred, task):
         scale = self.scale - 0.1
+        if isinstance(pred.bbox, list):
+            pred.bbox = np.array(pred.bbox)
         x1, y1, x2, y2 = pred.bbox.astype(np.int16)
         # draw person bbox
         cv2.rectangle(image, (x1,y1), (x2,y2), self.color, self.thickness)
@@ -80,7 +82,7 @@ class Drawer:
                 is_upper_pos = False
             return xmax, ymax, y_text, is_upper_pos
 
-        if pred.id:
+        if task == 'action':
             track_label = f'{pred.id}'
             *track_loc, is_upper_pos = get_label_position(track_label, is_track=True)
             cv2.rectangle(image, (x1, y1), (track_loc[0], track_loc[1]), self.color, -1)

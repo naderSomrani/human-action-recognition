@@ -1,6 +1,5 @@
-from flask import Flask, flash, request, redirect, url_for
+from flask import Flask, flash, request, redirect, url_for, render_template, jsonify
 from werkzeug.utils import secure_filename
-from flask import jsonify
 
 import _init_paths
 import time
@@ -138,7 +137,7 @@ def person_action_recognition_api():
         })
 
         # draw predicted results on bgr_img with frame info
-        render_image = drawer.render_frame(bgr_frame, predictions, **user_text)
+        render_image = drawer.render_frame(bgr_frame, predictions, task, **user_text)
 
         if video.frame_cnt == 1 and save_folder:
             # initiate writer for saving rendered video.
@@ -169,3 +168,7 @@ def person_action_recognition_api():
     return jsonify({
         'url': 'http://' + request.host + '/' + output_path
     })
+
+@app.route('/')
+def index():
+    return render_template('action.html')
